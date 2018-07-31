@@ -1,31 +1,31 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.henix.squash</groupId>
-	<artifactId>quan-project-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>fr.henix.squash</groupId>
+    <artifactId>quan-project-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>quan-project-parent-pom</name>
+    <name>quan-project-parent-pom</name>
 
-	<description>try to learn Squash TA code source</description>
+    <description>try to learn Squash TA code source</description>
 
-	<inceptionYear>2018</inceptionYear>
-	
-	<licenses>
-		<license>
-			<name>GNU Lesser General Public License V3</name>
-		</license>
-	</licenses>
-	
-	<organization>
-		<name>HENIX</name>
-	</organization>
-	
-	<!-- ============================ distribution ======================== -->
-	
-	<distributionManagement>
+    <inceptionYear>2018</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License V3</name>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>HENIX</name>
+    </organization>
+
+    <!-- ============================ distribution ======================== -->
+
+    <distributionManagement>
         <repository>
             <id>squash-release-deploy-repo</id>
             <name>Squash releases deployment repo</name>
@@ -37,4 +37,340 @@
             <url>${deploy-repo.snapshot.url}</url>
         </snapshotRepository>
     </distributionManagement>
+
+    <!-- ======================== /release production code ========================= -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.source.version>1.7</jdk.source.version>
+        <jdk.target.version>1.7</jdk.target.version>
+
+        <!-- Maven plugin version -->
+        <maven.license.version>3.0</maven.license.version>
+        <maven.install.version>2.3</maven.install.version>
+        <maven.deploy.version>2.7</maven.deploy.version>
+        <maven.resources.version>2.5</maven.resources.version>
+        <maven.compiler.version>2.3.2</maven.compiler.version>
+        <maven.source.version>2.1.2</maven.source.version>
+        <maven.surefire.version>2.11</maven.surefire.version>
+        <maven.surefire.report.version>2.11</maven.surefire.report.version>
+        <maven.release.version>2.5.3</maven.release.version>
+        <maven.enforcer.version>1.0.1</maven.enforcer.version>
+        <maven.jar.version>2.3.2</maven.jar.version>
+        <maven.assembly.version>2.3</maven.assembly.version>
+        <maven.javadoc.version>2.9</maven.javadoc.version>
+
+        <!-- License info -->
+        <license.name>GNU-LGPL-3</license.name>
+        <license.inception.year>${project.inceptionYear}</license.inception.year>
+        <licence.current.year>2018</licence.current.year>
+        <license.copyright.owner>${project.organization.Name}</license.copyright.owner>
+
+        <!-- Logging dependency -->
+        <slf4j.version>1.7.5</slf4j.version>
+        <log4j.version>2.5</log4j.version>
+
+        <!-- Test dependency -->
+        <groovy.all.version>2.0.7</groovy.all.version>
+        <groovy.spock.version>0.7-groovy-2.0</groovy.spock.version>
+        <junit.version>4.12</junit.version>
+        <cglib.nodep.version>2.2.2</cglib.nodep.version>
+        <objenesis.version>1.2</objenesis.version>
+        <groovy.eclipse.compiler.version>2.7.0-01</groovy.eclipse.compiler.version>
+        <groovy.eclipse.batch.version>2.0.0-01</groovy.eclipse.batch.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy.all.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.spockframework</groupId>
+                <artifactId>spock-core</artifactId>
+                <version>${groovy.spock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib-nodep</artifactId>
+                <version>${cglib.nodep.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>${objenesis.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${maven.license.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>fr.henix.squash</groupId>
+                        <artifactId>quan-project-license</artifactId>
+                        <version>0.0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <strictCheck>true</strictCheck>
+                    <header>fr/henix/squash/licenseheader/${license.name}-license-header.txt</header>
+                    <properties>
+                        <license.yearSpan>${license.inception.year} - ${licence.current.year}</license.yearSpan>
+                        <license.copyrightOwner>${license.copyright.owner}</license.copyrightOwner>
+                    </properties>
+                    <excludes>
+                        <!-- Tooling-related files -->
+                        <exclude>**/.checkstyle</exclude>
+                        <!-- Mercurial related parm files we don't know how to put headers into -->
+                        <exclude>.hgtags</exclude>
+                        <exclude>.hgignore</exclude>
+                            
+                        <exclude>.gitignore</exclude>
+                            
+                        <exclude>**/.keep</exclude>
+                        <exclude>**/*.orig</exclude>
+                        <!-- 
+                            TODO : we should work more on a case to case basis
+                            as some test resource files may accept headers without fuss
+                            whereas files that will be compared byte to byte to some output file
+                            or stream must be spared.
+                        -->
+                        <exclude>**/test/resources/**</exclude>
+                    </excludes>
+                    <mapping>
+                        <xml_eng>XML_STYLE</xml_eng>
+                        <xml_fra>XML_STYLE</xml_fra>
+                        <desktop>SCRIPT_STYLE</desktop>
+                    </mapping>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven.install.version}</version>				
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven.deploy.version}</version>					
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                            <goal>testResources</goal>
+                        </goals>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <includeEmptyDirs>true</includeEmptyDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${jdk.source.version}</source>
+                    <target>${jdk.target.version}</target>
+                    <compilerId>groovy-eclipse-compiler</compilerId>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-eclipse-compiler</artifactId>
+                        <version>${groovy.eclipse.compiler.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-eclipse-batch</artifactId>
+                        <version>${groovy.eclipse.batch.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+            </plugin>
+                
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven.surefire.report.version}</version>
+            </plugin>
+                
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven.release.version}</version>				
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven.jar.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven.assembly.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven.enforcer.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
+            </plugin>
+                
+            <!-- 
+                This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.
+                TODO : this IDE-centric pollution should get scraped from poms and dropped into a template settings.xml intended for Eclipse users.
+            -->
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>
+                                        org.apache.maven.plugins
+                                    </groupId>
+                                    <artifactId>
+                                        maven-compiler-plugin
+                                    </artifactId>
+                                    <versionRange>
+                                        [2.3.2,)
+                                    </versionRange>
+                                    <goals>
+                                        <goal>compile</goal>
+                                        <goal>testCompile</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <ignore />
+                                </action>
+                            </pluginExecution>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>
+                                        org.apache.maven.plugins
+                                    </groupId>
+                                    <artifactId>
+                                        maven-plugin-plugin
+                                    </artifactId>
+                                    <versionRange>
+                                        [3.2,)
+                                    </versionRange>
+                                    <goals>
+                                        <goal>descriptor</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <ignore />
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+
+    <pluginRepositories>
+        <!-- Our components -->
+        <pluginRepository>
+            <id>org.squashtest.repo.release</id>
+            <name>Squashtest repository for releases</name>
+            <url>http://repo.squashtest.org/maven2/release</url>
+        </pluginRepository>
+
+        <!-- Maven license plugin repository -->
+        <pluginRepository>
+            <id>mc-release</id>
+            <name>myclia repository</name>
+            <url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <url>http://repository.apache.org/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
