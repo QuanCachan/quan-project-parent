@@ -7,11 +7,20 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>quan-project-parent-pom</name>
+    <name>quan-project-parent</name>
 
     <description>try to learn Squash TA code source</description>
 
     <inceptionYear>2018</inceptionYear>
+    
+    <url>https://github.com/QuanCachan/quan-project-parent/</url>
+    
+    <scm>
+        <connection>scm:git:git@github.com:QuanCachan/quan-project-parent.git</connection>
+        <developerConnection>scm:git:git@github.com:QuanCachan/quan-project-parent.git</developerConnection>
+        <url>https://github.com/QuanCachan/quan-project-parent/</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <licenses>
         <license>
